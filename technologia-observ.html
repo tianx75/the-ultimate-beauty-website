@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Observ 520x Diagnosztika — The Ultimate Beauty Technológia</title>
+  <meta name="description" content="Observ 520x — 8 klinikai fénymód, objektív bőrelemzés. Minden Protocol itt kezdődik. The Ultimate Beauty, Budapest.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --cream:        #F8F4EE;
+      --ivory:        #FDFAF6;
+      --charcoal:     #1A1816;
+      --charcoal-60:  rgba(26,24,22,0.6);
+      --charcoal-30:  rgba(26,24,22,0.3);
+      --charcoal-10:  rgba(26,24,22,0.08);
+      --gold:         #B8965A;
+      --gold-light:   #D4B077;
+      --gold-pale:    rgba(184,150,90,0.12);
+      --warm-white:   #FEFCF9;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-sans:    'Montserrat', sans-serif;
+
+      --space-xs:   0.5rem;
+      --space-sm:   1rem;
+      --space-md:   2rem;
+      --space-lg:   4rem;
+      --space-xl:   7rem;
+      --space-2xl:  11rem;
+
+      --radius-sm:  4px;
+      --radius-md:  12px;
+
+      --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── RESET ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ─── TYPOGRAPHY ──────────────────────────────────────── */
+    .display-lg {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .display-md {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .body-text {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+      max-width: 52ch;
+    }
+    em { font-style: italic; font-family: var(--font-display); font-size: 1.08em; }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .container {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section {
+      padding: var(--space-xl) 0;
+    }
+
+    /* ─── DIVIDER ─────────────────────────────────────────── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.25rem 0;
+    }
+    .divider--center { margin: 1.25rem auto; }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), backdrop-filter var(--transition), padding var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(253,250,246,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      box-shadow: 0 1px 0 var(--charcoal-10);
+    }
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+    .nav__logo span { color: var(--gold); }
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav__link {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      transition: color 0.2s;
+    }
+    .nav__link:hover { color: var(--charcoal); }
+    .nav__link.active { color: var(--charcoal); }
+    .nav__cta {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      transition: all 0.2s;
+    }
+    .nav__cta:hover {
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--charcoal);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-primary:hover { background: #2e2a26; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--charcoal-30);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--charcoal); border-color: var(--charcoal); }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--gold);
+      color: var(--ivory);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-gold:hover { background: #a0803d; }
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-outline-light:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: var(--ivory);
+    }
+
+    /* ─── BREADCRUMB ─────────────────────────────────────── */
+    .breadcrumb {
+      padding: 6.5rem 0 0;
+      background: var(--charcoal);
+    }
+    .breadcrumb__inner {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .breadcrumb__link {
+      color: rgba(255,255,255,0.35);
+      transition: color 0.2s;
+    }
+    .breadcrumb__link:hover {
+      color: rgba(255,255,255,0.6);
+    }
+    .breadcrumb__sep {
+      color: rgba(255,255,255,0.15);
+    }
+    .breadcrumb__current {
+      color: var(--gold-light);
+    }
+
+    /* ─── COMPACT HERO ───────────────────────────────────── */
+    .compact-hero {
+      background: var(--charcoal);
+      color: var(--ivory);
+      padding: 3rem 0 var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .compact-hero::before {
+      content: 'OBSERV';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 18vw;
+      font-weight: 300;
+      color: rgba(255,255,255,0.02);
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+    }
+    .compact-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 20% 70%, rgba(184,150,90,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .compact-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+    .compact-hero__label {
+      color: var(--gold-light);
+    }
+    .compact-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .compact-hero__subtitle {
+      font-size: 0.875rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+      max-width: 58ch;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-meta__item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .hero-meta__label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .hero-meta__value {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    /* ─── OBSERV 520x ──────────────────────────────────────── */
+    .observ-section {
+      padding: var(--space-xl) 0;
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+    .observ-section .label { color: var(--gold-light); }
+    .observ-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: var(--space-lg);
+    }
+    .observ-grid p {
+      font-size: 0.875rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+    }
+    .observ-modes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .observ-mode {
+      background: var(--charcoal);
+      padding: 1.5rem 1.5rem;
+      transition: background 0.3s;
+    }
+    .observ-mode:hover { background: rgba(255,255,255,0.03); }
+    .observ-mode__num {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .observ-mode__title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ivory);
+      margin-bottom: 0.3rem;
+    }
+    .observ-mode__desc {
+      font-size: 0.72rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.4);
+    }
+    .observ-mode__category {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 0.75rem;
+    }
+    .observ-mode__category--skin {
+      background: rgba(184,150,90,0.15);
+      color: var(--gold-light);
+    }
+    .observ-mode__category--appear {
+      background: rgba(196,116,110,0.15);
+      color: #E08080;
+    }
+    .observ-promo {
+      margin-top: var(--space-lg);
+      padding: 2.5rem 3rem;
+      background: rgba(184,150,90,0.06);
+      border: 1px solid rgba(184,150,90,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .observ-promo__text {
+      flex: 1;
+      min-width: 280px;
+    }
+    .observ-promo__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 400;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .observ-promo__desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.45);
+    }
+    .observ-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.35rem;
+    }
+    .observ-stat__number {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .observ-stat__label {
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      max-width: 140px;
+    }
+
+    /* ─── HOGYAN MUKODIK ──────────────────────────────────── */
+    .workflow-section {
+      padding: var(--space-xl) 0;
+      background: var(--ivory);
+    }
+    .workflow-section__header p {
+      margin-top: 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--charcoal-60);
+      max-width: 52ch;
+    }
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: var(--space-lg);
+      position: relative;
+    }
+    .workflow-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(16.66% + 2rem);
+      right: calc(16.66% + 2rem);
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.25;
+    }
+    .workflow-step {
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .workflow-step__num {
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--charcoal-10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 1.75rem;
+      background: var(--ivory);
+      position: relative;
+      z-index: 1;
+    }
+    .workflow-step__label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .workflow-step__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .workflow-step__sub {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .workflow-step__desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--charcoal-60);
+    }
+    .workflow-step__result {
+      margin-top: 1.25rem;
+      padding: 0.85rem 1.1rem;
+      background: var(--gold-pale);
+      border-left: 2px solid var(--gold);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+    }
+
+    /* ─── CTA BANNER ─────────────────────────────────────── */
+    .cta-banner {
+      padding: var(--space-xl) 0;
+      background: var(--charcoal);
+      text-align: center;
+      color: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,150,90,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-banner .label { color: var(--gold-light); }
+    .cta-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin: 1.25rem 0 1rem;
+    }
+    .cta-banner__subtitle {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 45ch;
+      margin: 0 auto 2.5rem;
+    }
+    .cta-banner__actions {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    .footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: var(--space-lg) 0 var(--space-md);
+      color: rgba(255,255,255,0.4);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+    }
+    .footer__tagline { font-size: 0.78rem; line-height: 1.7; max-width: 28ch; margin-bottom: 1.25rem; }
+    .footer__contact { margin-top: 0.5rem; }
+    .footer__contact-item { font-size: 0.72rem; line-height: 2; color: rgba(255,255,255,0.5); }
+    .footer__col-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.25rem;
+    }
+    .footer__link {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .footer__link:hover { color: rgba(255,255,255,0.8); }
+    .footer__link--inline { margin: 0; }
+    .footer__bottom {
+      padding-top: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+    }
+    .footer__legal {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    /* ─── SCROLL ANIMATIONS ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── UTILITIES ──────────────────────────────────────── */
+    .color-ivory { color: var(--ivory); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .observ-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .observ-promo { flex-direction: column; text-align: center; }
+      .workflow-grid { grid-template-columns: 1fr; }
+      .workflow-grid::before { display: none; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .nav__links { display: none; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .cta-banner__actions { flex-direction: column; align-items: center; }
+      .hero-meta { flex-direction: column; gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════
+       NAV
+  ═══════════════════════════════════ -->
+  <nav class="nav" id="mainNav">
+    <a href="the-ultimate-beauty-homepage.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+    <ul class="nav__links">
+      <li><a href="the-ultimate-beauty-homepage.html" class="nav__link">Klinika</a></li>
+      <li><a href="protocol-hub.html" class="nav__link">Protocol</a></li>
+      <li><a href="kezelesek.html" class="nav__link">Kezelések</a></li>
+      <li><a href="technologia.html" class="nav__link active">Technológia</a></li>
+      <li><a href="akademia.html" class="nav__link">Akadémia</a></li>
+      <li><a href="konzultacio.html" class="nav__link">Konzultáció</a></li>
+    </ul>
+    <a href="konzultacio.html" class="nav__cta">Konzultáció &rarr;</a>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════
+       BREADCRUMB
+  ═══════════════════════════════════ -->
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb__inner">
+        <a href="technologia.html" class="breadcrumb__link">Technol&oacute;gia Hub</a>
+        <span class="breadcrumb__sep">&rsaquo;</span>
+        <span class="breadcrumb__current">Observ 520x</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       HERO
+  ═══════════════════════════════════ -->
+  <section class="compact-hero">
+    <div class="container">
+      <div class="compact-hero__inner reveal">
+        <span class="label compact-hero__label">Diagnosztikai Alap</span>
+        <h1 class="compact-hero__title">Observ 520x &mdash; minden Protocol<br>itt <em>kezd&#337;dik.</em></h1>
+        <p class="compact-hero__subtitle">8 klinikai f&eacute;nym&oacute;d, objektív b&#337;relemz&eacute;s a felsz&iacute;nt&#337;l a m&eacute;ly dermiszig. Nem v&eacute;lem&eacute;ny &mdash; hanem adat. Az Observ 520x az a diagnosztikai alap, amelyre minden szem&eacute;lyre szabott Protocol &uacute;tvonal &eacute;p&uuml;l.</p>
+
+        <div class="hero-meta">
+          <div class="hero-meta__item">
+            <span class="hero-meta__label">F&eacute;nym&oacute;dok</span>
+            <span class="hero-meta__value">8 m&oacute;d</span>
+          </div>
+          <div class="hero-meta__item">
+            <span class="hero-meta__label">T&iacute;pus</span>
+            <span class="hero-meta__value">Klinikai diagnosztika</span>
+          </div>
+          <div class="hero-meta__item">
+            <span class="hero-meta__label">Akci&oacute;</span>
+            <span class="hero-meta__value">Els&#337; 100 ingyenes</span>
+          </div>
+          <div class="hero-meta__item">
+            <span class="hero-meta__label">Megk&ouml;zel&iacute;t&eacute;s</span>
+            <span class="hero-meta__value">Objekt&iacute;v elemz&eacute;s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       OBSERV 520x — 8 MÓD + PROMO
+  ═══════════════════════════════════ -->
+  <section class="observ-section">
+    <div class="container">
+      <div class="reveal">
+        <span class="label">8 klinikai f&eacute;nym&oacute;d</span>
+        <div class="divider"></div>
+        <h2 class="display-lg color-ivory">A b&#337;r val&oacute;di &aacute;llapota<br><em>&mdash; r&eacute;tegr&#337;l r&eacute;tegre.</em></h2>
+      </div>
+
+      <div class="observ-grid">
+        <div class="reveal reveal-delay-1">
+          <p>Miel&#337;tt b&aacute;rmilyen kezel&eacute;st vagy protokollt megkezden&eacute;nk, az Observ 520x 8 k&uuml;l&ouml;nb&ouml;z&#337; f&eacute;nym&oacute;dban t&eacute;rk&eacute;pezi fel a b&#337;r val&oacute;di &aacute;llapot&aacute;t &mdash; a felsz&iacute;nt&#337;l a m&eacute;ly dermiszig.</p>
+          <p>A p&aacute;ciens saj&aacute;t szem&eacute;vel l&aacute;tja, amit szabad szemmel nem: UV-k&aacute;rosod&aacute;s, rejtett pigment&aacute;ci&oacute;, mikro&eacute;r-h&aacute;l&oacute;zat, dehidrat&aacute;ci&oacute;. Ez nem v&eacute;lem&eacute;ny &mdash; hanem objekt&iacute;v, klinikai diagnosztika.</p>
+          <p>Az Observ &aacute;ltal felt&aacute;rt k&eacute;p alapj&aacute;n &eacute;p&iacute;tj&uuml;k fel a szem&eacute;lyre szabott Protocol &uacute;tvonalat. Nem &bdquo;aj&aacute;nlunk kezel&eacute;st&rdquo; &mdash; hanem megmutatjuk, amit a b&#337;r mond.</p>
+        </div>
+
+        <div class="observ-modes reveal reveal-delay-2">
+          <!-- Skin Analysis módok -->
+          <div class="observ-mode">
+            <span class="observ-mode__category observ-mode__category--skin">Skin Analysis</span>
+            <span class="observ-mode__num">01</span>
+            <div class="observ-mode__title">Daylight</div>
+            <p class="observ-mode__desc">A b&#337;r kontroll&aacute;lt term&eacute;szetes f&eacute;nyviszonyok k&ouml;z&ouml;tt &mdash; t&oacute;nus, p&iacute;r, felsz&iacute;ni tisztas&aacute;g.</p>
+          </div>
+          <div class="observ-mode">
+            <span class="observ-mode__category observ-mode__category--skin">Skin Analysis</span>
+            <span class="observ-mode__num">02</span>
+            <div class="observ-mode__title">Parallel Polarised</div>
+            <p class="observ-mode__desc">Finomvonalak, mikro-relief, r&aacute;ncok, p&oacute;rusok r&eacute;szletes vizsg&aacute;lata.</p>
+          </div>
+          <div class="observ-mode">
+            <span class="observ-mode__category observ-mode__category--skin">Skin Analysis</span>
+            <span class="observ-mode__num">03</span>
+            <div class="observ-mode__title">Cross Polarised</div>
+            <p class="observ-mode__desc">Felsz&iacute;ni t&uuml;kr&ouml;z&#337;d&eacute;s n&eacute;lk&uuml;l a derm&aacute;lis strukt&uacute;r&aacute;k, gyullad&aacute;s &eacute;s m&eacute;lypigment&aacute;ci&oacute; felt&aacute;r&aacute;sa.</p>
+          </div>
+          <div class="observ-mode">
+            <span class="observ-mode__category observ-mode__category--skin">Skin Analysis</span>
+            <span class="observ-mode__num">04</span>
+            <div class="observ-mode__title">True UV</div>
+            <p class="observ-mode__desc">UV fluoreszcencia &mdash; bakt&eacute;riumok, m&eacute;ly napk&aacute;rosod&aacute;s &eacute;s rejtett elv&aacute;ltoz&aacute;sok kimutat&aacute;sa.</p>
+          </div>
+          <div class="observ-mode">
+            <span class="observ-mode__category observ-mode__category--skin">Skin Analysis</span>
+            <span class="observ-mode__num">05</span>
+            <div class="observ-mode__title">Simulated Wood's</div>
+            <p class="observ-mode__desc">Dehidrat&aacute;ci&oacute;, faggy&uacute;egyens&uacute;ly &eacute;s lipid-sz&aacute;razs&aacute;g diagnosztik&aacute;ja Wood's f&eacute;nyben.</p>
+          </div>
+          <!-- Appearance Analysis módok -->
+          <div class="observ-mode">
+            <span class="observ-mode__category observ-mode__category--appear">Appearance</span>
+            <span class="observ-mode__num">06</span>
+            <div class="observ-mode__title">Surface Texture</div>
+            <p class="observ-mode__desc">Text&uacute;ra-topogr&aacute;fia &mdash; p&oacute;rusok, hegek, akne nyomok, felsz&iacute;ni egyenetlens&eacute;gek.</p>
+          </div>
+          <div class="observ-mode">
+            <span class="observ-mode__category observ-mode__category--appear">Appearance</span>
+            <span class="observ-mode__num">07</span>
+            <div class="observ-mode__title">Pigmentation</div>
+            <p class="observ-mode__desc">Napk&aacute;rosod&aacute;s, melasma, hiperpigment&aacute;ci&oacute; &eacute;s &aacute;ltal&aacute;nos sz&iacute;nelt&eacute;r&eacute;sek vizualiz&aacute;l&aacute;sa.</p>
+          </div>
+          <div class="observ-mode">
+            <span class="observ-mode__category observ-mode__category--appear">Appearance</span>
+            <span class="observ-mode__num">08</span>
+            <div class="observ-mode__title">Vascularity</div>
+            <p class="observ-mode__desc">A mikro&eacute;r-h&aacute;l&oacute;zat felt&eacute;rk&eacute;pez&eacute;se &mdash; b&#337;rp&iacute;r, rosacea, &eacute;rg&ouml;rcs&ouml;k azonos&iacute;t&aacute;sa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo banner -->
+      <div class="observ-promo reveal">
+        <div class="observ-promo__text">
+          <div class="observ-promo__title">Els&#337; 100 p&aacute;ciens &mdash; ingyenes Observ diagnosztika</div>
+          <p class="observ-promo__desc">Foglaljon konzult&aacute;ci&oacute;t, &eacute;s az Observ 520x teljes b&#337;ranal&iacute;zist aj&aacute;nd&eacute;kba kapja. L&aacute;ssa saj&aacute;t szem&eacute;vel, amit a b&#337;re mond &mdash; miel&#337;tt b&aacute;rmilyen d&ouml;nt&eacute;st hozna.</p>
+        </div>
+        <div class="observ-stat">
+          <span class="observ-stat__number">35%+</span>
+          <span class="observ-stat__label">kezel&eacute;si konverzi&oacute; n&ouml;veked&eacute;s klinik&aacute;kn&aacute;l</span>
+        </div>
+        <a href="konzultacio.html" class="btn-gold">Ingyenes diagnosztika &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       HOGYAN MŰKÖDIK? — Diagnosztikai workflow
+  ═══════════════════════════════════ -->
+  <section class="workflow-section">
+    <div class="container">
+      <div class="workflow-section__header reveal">
+        <span class="label">Hogyan m&#369;k&ouml;dik?</span>
+        <div class="divider"></div>
+        <h2 class="display-lg">Felv&eacute;tel &rarr; Elemz&eacute;s &rarr; <em>Protocol terv</em></h2>
+        <p>Az Observ 520x diagnosztika nem csup&aacute;n egy vizsg&aacute;lat &mdash; hanem a szem&eacute;lyre szabott kezel&eacute;si &uacute;tvonal kiindul&oacute;pontja. H&aacute;rom l&eacute;p&eacute;sben az adatb&oacute;l terv lesz.</p>
+      </div>
+
+      <div class="workflow-grid">
+        <div class="workflow-step reveal">
+          <div class="workflow-step__num">01</div>
+          <span class="workflow-step__label">1. l&eacute;p&eacute;s</span>
+          <div class="workflow-step__title">Felv&eacute;tel 8 m&oacute;dban</div>
+          <span class="workflow-step__sub">Teljes spekrum&uacute; k&eacute;palkot&aacute;s</span>
+          <p class="workflow-step__desc">Az Observ 520x 8 k&uuml;l&ouml;nb&ouml;z&#337; f&eacute;nym&oacute;dban &mdash; a kontroll&aacute;lt nappali f&eacute;nyt&#337;l az UV fluoreszcenci&aacute;ig &mdash; r&ouml;gz&iacute;ti a b&#337;r &aacute;llapot&aacute;t. Minden r&eacute;teg, minden elrejt&#337;z&#337; probl&eacute;ma l&aacute;that&oacute;v&aacute; v&aacute;lik.</p>
+          <div class="workflow-step__result">
+            8 nagyfelbont&aacute;s&uacute; diagnosztikai k&eacute;p &mdash; a felsz&iacute;nt&#337;l a m&eacute;ly dermiszig
+          </div>
+        </div>
+        <div class="workflow-step reveal reveal-delay-1">
+          <div class="workflow-step__num">02</div>
+          <span class="workflow-step__label">2. l&eacute;p&eacute;s</span>
+          <div class="workflow-step__title">Objekt&iacute;v elemz&eacute;s</div>
+          <span class="workflow-step__sub">Adat, nem v&eacute;lem&eacute;ny</span>
+          <p class="workflow-step__desc">A k&eacute;peket a klinikai szak&eacute;rt&#337; &eacute;rtelmezi: pigment&aacute;ci&oacute;s mint&aacute;zatok, &eacute;rh&aacute;l&oacute;zat, dehidrat&aacute;ci&oacute;s z&oacute;n&aacute;k, UV-k&aacute;rosod&aacute;s m&eacute;rt&eacute;ke. A p&aacute;ciens is l&aacute;tja, amit az Observ felt&aacute;r &mdash; &iacute;gy &eacute;rti, mi&eacute;rt sz&uuml;ks&eacute;ges a javasolt &uacute;tvonal.</p>
+          <div class="workflow-step__result">
+            R&eacute;szletes b&#337;rt&eacute;rk&eacute;p &eacute;s &aacute;llapotfelm&eacute;r&eacute;s &mdash; vizu&aacute;lis bizony&iacute;t&eacute;kkal
+          </div>
+        </div>
+        <div class="workflow-step reveal reveal-delay-2">
+          <div class="workflow-step__num">03</div>
+          <span class="workflow-step__label">3. l&eacute;p&eacute;s</span>
+          <div class="workflow-step__title">Szem&eacute;lyre szabott Protocol terv</div>
+          <span class="workflow-step__sub">Rendszer, nem &eacute;szrev&eacute;tel</span>
+          <p class="workflow-step__desc">Az Observ eredm&eacute;nyei alapj&aacute;n &ouml;ssze&aacute;ll a szem&eacute;lyre szabott Protocol &uacute;tvonal: mely technol&oacute;gi&aacute;k, milyen sorrendben, milyen intenzit&aacute;ssal. Nem &bdquo;aj&aacute;nlunk kezel&eacute;st&rdquo; &mdash; hanem rendszert &eacute;p&iacute;t&uuml;nk.</p>
+          <div class="workflow-step__result">
+            Egyedi Protocol &uacute;tvonal &mdash; Prepare &rarr; Treat &rarr; Recover f&aacute;zisokkal
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       CTA BANNER
+  ═══════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="container">
+      <span class="label">Observ 520x + Szem&eacute;lyes konzult&aacute;ci&oacute;</span>
+      <h2 class="cta-banner__title reveal">Az Observ megmutatja.<br>Mi <em>megoldjuk.</em></h2>
+      <p class="cta-banner__subtitle reveal reveal-delay-1">
+        Egy 60 perces konzult&aacute;ci&oacute;n az Observ 520x 8 m&oacute;dban felt&eacute;rk&eacute;pezi a b&#337;r&eacute;t &mdash; &eacute;s az eredm&eacute;nyek alapj&aacute;n &ouml;sszerakjuk a szem&eacute;lyre szabott Protocol &uacute;tvonalat.
+      </p>
+      <div class="cta-banner__actions reveal reveal-delay-2">
+        <a href="konzultacio.html" class="btn-gold">
+          Konzult&aacute;ci&oacute; foglal&aacute;sa
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="technologia.html" class="btn-outline-light">Vissza a Technol&oacute;gia Hub-ra &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">The Ultimate Beauty.</div>
+          <p class="footer__tagline">Boutique eszt&eacute;tikai klinika Bud&aacute;n. Szem&eacute;lyre szabott orvoseszt&eacute;tika &eacute;s ULTIMA technol&oacute;gia, egyetlen &ouml;sszehangolt rendszerben.</p>
+          <div class="footer__contact">
+            <p class="footer__contact-item">1026 Budapest, [Villa c&iacute;m &mdash; Webflow-ban v&eacute;gleges&iacute;tend&#337;]</p>
+            <p class="footer__contact-item">+36 1 XXX XXXX</p>
+            <p class="footer__contact-item">info@theultimatebeauty.net</p>
+            <p class="footer__contact-item">H&ndash;P: 9:00&ndash;18:00 &middot; Szombat: el&#337;jegyz&eacute;s alapj&aacute;n</p>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Protocol</div>
+          <a href="protocol-hub.html" class="footer__link">Protocol Hub</a>
+          <a href="the-ultimate-beauty-protocol.html" class="footer__link">A filoz&oacute;fia</a>
+          <a href="protocol-treatments.html" class="footer__link">Protocol Treatments</a>
+          <a href="clinical-program.html" class="footer__link">Clinical Programs</a>
+          <a href="kutatas.html" class="footer__link">Kutat&aacute;s</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Kezel&eacute;sek</div>
+          <a href="kezelesek.html" class="footer__link">&Ouml;sszes kezel&eacute;s</a>
+          <a href="technologia.html" class="footer__link">Technol&oacute;gia</a>
+          <a href="konzultacio.html" class="footer__link">Konzult&aacute;ci&oacute;</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Klinika</div>
+          <a href="the-ultimate-beauty-homepage.html" class="footer__link">A klinika</a>
+          <a href="akademia.html" class="footer__link">Akad&eacute;mia</a>
+          <a href="adatvedelem.html" class="footer__link">Adatv&eacute;delem</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 The Ultimate Beauty. Minden jog fenntartva. &middot; Budapest &middot; Buda</span>
+        <div class="footer__legal">
+          <a href="adatvedelem.html" class="footer__link footer__link--inline">Adatv&eacute;delem</a>
+          <a href="aszf.html" class="footer__link footer__link--inline">&Aacute;SZF</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════ -->
+  <script>
+    // Nav scroll behaviour
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
